@@ -6,6 +6,7 @@ public abstract class Users {
     private String userName;
     private String password;
     protected String role;
+    
 
     public Users(String name, String userName,
                  String password, String role) {
