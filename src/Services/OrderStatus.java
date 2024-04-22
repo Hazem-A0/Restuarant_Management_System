@@ -1,6 +1,6 @@
 package Services;
 
-enum OrderStatus {
+ public enum OrderStatus {
 	PLACED,
     PROCESSING,
     COMPLETED,

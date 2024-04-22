@@ -6,17 +6,38 @@ public abstract class Users {
     private String userName;
     private String password;
     protected String role;
+    private int contactNumber ;
+
     
 
-    public Users(String name, String userName,
-                 String password, String role) {
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-        this.role = role;
-    }
+   
 
-    public String getName() {
+	public Users(String name, String userName, String password, String role, int contactNumber) {
+		super();
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+		this.contactNumber = contactNumber;
+	}
+
+
+	public int getContactNumber() {
+		return contactNumber;
+	}
+
+
+	public void setContactNumber(int contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+	public String getName() {
         return name;
     }
 

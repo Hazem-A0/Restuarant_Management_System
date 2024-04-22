@@ -7,6 +7,7 @@ public class Order {
 	 private List<OrderItem> items;
 	private OrderStatus status;
 	
+	
 	public Order(int order_id, String clientName) {
 		this.order_id = order_id;
 		this.clientName = clientName;
