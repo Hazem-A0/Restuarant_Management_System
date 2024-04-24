@@ -1,6 +1,7 @@
 package Services;
 
-public class OrderItem {
+
+public class OrderItem{
 	private Menu_items menuItem;
 
     public OrderItem(Menu_items menuItem) {
