@@ -1,18 +1,38 @@
 package Users;
 import Services.Order;
+import Services.OrderItem;
 import Services.OrderStatus;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Customer extends Users {
 	private int customer_Id;
 	private boolean checkedIn;
 	private Order currentOrder;
 	private LocalDateTime lastVisitTime;
+	private List<OrderItem> items;
 	
 
-	
+	public LocalDateTime getLastVisitTime() {
+		return lastVisitTime;
+	}
 
+	public void setLastVisitTime(LocalDateTime lastVisitTime) {
+		this.lastVisitTime = lastVisitTime;
+	}
 
+	public List<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+		
+	}
+
+	public void setCheckedIn(boolean checkedIn) {
+		this.checkedIn = checkedIn;
+	}
 
 	public Customer(String name, String userName, String password, String role, int contactNumber, int customer_Id) {
 		super(name, userName, password, role, contactNumber);
@@ -31,11 +51,13 @@ public class Customer extends Users {
         checkedIn = true;
         System.out.println(name + " has checked in.");
     }
+	
 	public void checkOut() {
         checkedIn = false;
         lastVisitTime = LocalDateTime.now();
         System.out.println(name + " has checked out.");
     }
+	
 	public void cancelOrder() {
         if (currentOrder != null) {
             currentOrder.setStatus(OrderStatus.CANCELLED);
@@ -71,9 +93,7 @@ public class Customer extends Users {
     public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
     }
-
-	
-	
+    
 	
 
 }

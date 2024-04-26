@@ -9,9 +9,6 @@ public abstract class Users {
     private int contactNumber ;
 
     
-
-   
-
 	public Users(String name, String userName, String password, String role, int contactNumber) {
 		super();
 		this.name = name;
