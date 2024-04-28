@@ -5,6 +5,7 @@ public  class Menu_items implements Comparable<Menu_items>{
 	private String dishName;
 	private String dishType;
 	private int price;
+
 	
 	public Menu_items(String dishType, String dishName, int price){
     this.dishType = dishType;
