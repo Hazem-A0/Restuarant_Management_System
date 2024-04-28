@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Customer extends Users {
-	private int customer_Id;
 	private boolean checkedIn;
 	private Order currentOrder;
 	private LocalDateTime lastVisitTime;
@@ -34,19 +33,18 @@ public class Customer extends Users {
 		this.checkedIn = checkedIn;
 	}
 
-	public Customer(String name, String userName, String password, String role, int contactNumber, int customer_Id) {
-		super(name, userName, password, role, contactNumber);
-		this.customer_Id = customer_Id;
+	public Customer(String name, String userName, String password) {
+		super(name, userName, password, "Client");
 		this.checkedIn=false;
 	}
 
-	public int getCustomer_Id() {
+	/*public int getCustomer_Id() {
 		return customer_Id;
 	}
 
 	public void setCustomer_Id(int customer_Id) {
 		this.customer_Id = customer_Id;
-	}
+	}*/
 	public void checkIn() {
         checkedIn = true;
         System.out.println(name + " has checked in.");

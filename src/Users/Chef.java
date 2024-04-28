@@ -7,8 +7,8 @@ import Services.OrderItem;
 public final class Chef extends Users {
     
     
-    public Chef(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
+    public Chef(String name, String userName, String password) {
+		super(name, userName, password, "Chef");
 	}
 
 	public void takeOrder(Order order) {
@@ -21,7 +21,7 @@ public final class Chef extends Users {
     }
 
     private void prepareItem(Menu_items menuItem) {
-        System.out.println("Preparing: " + menuItem.getTitle());
+        System.out.println("Preparing: " + menuItem.getDishName());
     }
 
 }

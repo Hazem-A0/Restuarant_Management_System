@@ -1,29 +1,38 @@
 package Services;
 
-public class Menu_items implements Comparable<Menu_items>{
+public abstract class Menu_items implements Comparable<Menu_items>{
 
-	private int menuItemID;
-	private String title;
-	private String description;
+	private String dishName;
+	private String dishType;
 	private int price;
 	
-	public Menu_items(int menuItemID, String title, String description, int price) {
-		this.menuItemID = menuItemID;
-		this.title = title;
-		this.description = description;
-		this.price = price;
+	public Menu_items(String dishType, String dishName, int price){
+    this.dishType = dishType;
+    this.dishName = dishName;
+    this.price = price;
+    
+}
+	   public String getDishType() {
+	        return dishType;
+	    }
+	   public void setDishType(String dishType) {  // dish types to be modified
+	        if (!(dishType.equals("main_course") || dishType.equals("appetizer")
+	                || dishType.equals("desert")))
+	            throw new IllegalArgumentException();
+
+	        this.dishType = dishType;
+	    }
+	
+	public String getDishName() {
+		return dishName;
 	}
 
-	public int getMenuItemID() {
-		return menuItemID;
+	public void setDishName(String dishName) {
+		this.dishName = dishName;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public String getDescription() {
-		return description;
+	public String getdishType() {
+		return dishType;
 	}
 
 	public int getPrice() {
@@ -31,6 +40,7 @@ public class Menu_items implements Comparable<Menu_items>{
 	}
 	public void updatePrice(int newPrice)
 	{
+		if (newPrice<0) throw new IllegalArgumentException();
 		this.price = newPrice;
 	}
 	
@@ -42,7 +52,25 @@ public class Menu_items implements Comparable<Menu_items>{
 			return -1;
 		else
 			return 0;
-	}
+	}	
+	 @Override
+	    public boolean equals(Object obj){
+	        return this.dishType.equals(((Menu_items)obj).getdishType())
+	                && this.dishName.equals(((Menu_items)obj).getDishName())
+	                && this.price == ((Menu_items)obj).getPrice();
+	    }
+	
+	 @Override
+	    public String toString(){
+	        return "Dish type: " + dishType + "\n"
+	                + "Dish name: " + dishName + "\n"
+	                + "Dish price: " + price + "\n";
+	    }
 
 	
 }
+
+/*public int getMenuItemID() {
+return menuItemID;
+}
+*/

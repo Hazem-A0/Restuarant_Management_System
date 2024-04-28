@@ -6,8 +6,8 @@ public final class manager extends Users {
 	
 
 
-	public manager(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
+	public manager(String name, String userName, String password, String role) {
+		super(name, userName, password, role);
 
 	}
 	

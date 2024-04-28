@@ -10,8 +10,8 @@ public class Receptionist extends Users{
 	private ArrayList<Tables> tables;
     private ArrayList<Reservation> reservations;
     
-	public Receptionist(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
+	public Receptionist(String name, String userName, String password) {
+		super(name, userName, password, "Receptionist");
 		this.tables = tables;
         this.reservations = new ArrayList<>();
 	}

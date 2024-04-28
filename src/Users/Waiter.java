@@ -6,8 +6,8 @@ import Services.OrderItem;
 
 public final class Waiter extends Users {
    
-    public Waiter(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
+    public Waiter(String name, String userName, String password) {
+		super(name, userName, password, "Waiter");
 	}
 
 	public Order createOrder(ArrayList<OrderItem> items , int ID,String name) {
