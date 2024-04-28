@@ -10,11 +10,12 @@ public class Receptionist extends Users{
 	private ArrayList<Tables> tables;
     private ArrayList<Reservation> reservations;
     
-	public Receptionist(String name, String userName, String password) {
-		super(name, userName, password, "Receptionist");
+	public Receptionist(String name, String userName, String password, String role, int contactNumber) {
+		super(name, userName, password, role, contactNumber);
 		this.tables = tables;
         this.reservations = new ArrayList<>();
 	}
+
 	 public void createReservation(Customer customer_name, LocalDateTime dateTime, int numSeats) {
 	        if (tablesAvailable(numSeats)) {
 	            Reservation reservation = new Reservation(customer_name, dateTime, numSeats);

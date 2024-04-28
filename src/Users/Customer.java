@@ -33,8 +33,10 @@ public class Customer extends Users {
 		this.checkedIn = checkedIn;
 	}
 
-	public Customer(String name, String userName, String password) {
-		super(name, userName, password, "Client");
+
+
+	public Customer(String name, String userName, String password, String role, int contactNumber) {
+		super(name, userName, password, role, contactNumber);
 		this.checkedIn=false;
 	}
 

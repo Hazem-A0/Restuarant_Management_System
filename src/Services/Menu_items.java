@@ -1,6 +1,6 @@
 package Services;
 
-public abstract class Menu_items implements Comparable<Menu_items>{
+public  class Menu_items implements Comparable<Menu_items>{
 
 	private String dishName;
 	private String dishType;

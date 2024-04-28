@@ -10,10 +10,14 @@ public class Menu {
 	public Menu() {
 		menuItems = new ArrayList<>();
     }
+
+
+
 	protected void addItem(Menu_items item, manager manager) { //(Menu_items item, manager manager)
+
         if (manager != null) {
         	menuItems.add(item);
-            System.out.println("Item '" + item.getTitle() + "' added to the menu.");
+            System.out.println("Item '" + item.getDishName() + "' added to the menu.");
         } else {
             System.out.println("Only manager can add items to the menu.");
         }
@@ -22,7 +26,7 @@ public class Menu {
     protected void removeItem(Menu_items item, manager manager) {
         if (manager != null) {
         	menuItems.remove(item);
-            System.out.println("Item '" + item.getTitle() + "' removed from the menu.");
+            System.out.println("Item '" + item.getDishName	() + "' removed from the menu.");
         } else {
             System.out.println("Only manager can remove items from the menu.");
         }

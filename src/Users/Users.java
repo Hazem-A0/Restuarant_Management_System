@@ -9,17 +9,19 @@ public abstract class Users {
     private int contactNumber ;
 
     
-	public Users(String name, String userName, String password, String role) {
+
+
+	public Users(String name, String userName, String password, String role, int contactNumber) {
 		super();
 		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.role = role;
-		//this.contactNumber = contactNumber;
+		this.contactNumber = contactNumber;
 	}
 
 
-	/*public int getContactNumber() {
+	public int getContactNumber() {
 		return contactNumber;
 	}
 
@@ -27,7 +29,7 @@ public abstract class Users {
 	public void setContactNumber(int contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-*/
+
 
 	public void setRole(String role) {
 		this.role = role;

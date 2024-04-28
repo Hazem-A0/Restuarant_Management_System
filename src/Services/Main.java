@@ -11,13 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
         // Create menu items
-        Menu_items item1 = new Menu_items(1, "Spaghetti", "Pasta with tomato sauce", 10);
-        Menu_items item2 = new Menu_items(2, "Pizza", "Italian pizza with toppings", 12);
-        Menu_items item3 = new Menu_items(3, "Salad", "Fresh garden salad", 6);
+        Menu_items item1 = new Menu_items("Main Course", "Spaghetti", 10);
+        Menu_items item2 = new Menu_items( "Main dishes", "Pizza", 12);
+        Menu_items item3 = new Menu_items( "Salads", "Salad", 6);
 
         // Create a menu
         Menu menu = new Menu();
-        manager managerInstance = new manager("John Doe", "manager", "password", "manager", 123456789);
+        manager managerInstance = new manager("John Doe", "manager", "password", "manager",1205495697);
         menu.addItem(item1, managerInstance);
         menu.addItem(item2, managerInstance);
         menu.addItem(item3, managerInstance);
@@ -25,11 +25,11 @@ public class Main {
         // Display menu
         System.out.println("Menu:");
         for (Menu_items menuItem : menu.getItems()) {
-            System.out.println(menuItem.getTitle() + " - $" + menuItem.getPrice());
+            System.out.println(menuItem.getDishName() + " - $" + menuItem.getPrice());
         }
 
         // Create a customer
-        Customer customer = new Customer("John Doe", "johndoe", "password", "customer", 123456789, 1);
+        Customer customer = new Customer("John Doe", "johndoe", "password", "customer", 123456789);
 
         // Customer checks in
         customer.checkIn();
@@ -46,7 +46,7 @@ public class Main {
         // Display order details
         System.out.println("\nOrder Details:");
         for (OrderItem orderItem : order.getItems()) {
-            System.out.println(orderItem.getMenuItem().getTitle() + " - Quantity: " + orderItem.getQuantity());
+            System.out.println(orderItem.getMenuItem().getDishName() + " - Quantity: " + orderItem.getQuantity());
         }
 
         // Customer checks out

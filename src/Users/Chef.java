@@ -7,8 +7,9 @@ import Services.OrderItem;
 public final class Chef extends Users {
     
     
-    public Chef(String name, String userName, String password) {
-		super(name, userName, password, "Chef");
+
+	public Chef(String name, String userName, String password, String role, int contactNumber) {
+		super(name, userName, password, role, contactNumber);
 	}
 
 	public void takeOrder(Order order) {
