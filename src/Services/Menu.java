@@ -10,7 +10,7 @@ public class Menu {
 	public Menu() {
 		menuItems = new ArrayList<>();
     }
-	protected void addItem(Menu_items item, manager manager) {
+	protected void addItem(Menu_items item, manager manager) { //(Menu_items item, manager manager)
         if (manager != null) {
         	menuItems.add(item);
             System.out.println("Item '" + item.getTitle() + "' added to the menu.");
