@@ -2,26 +2,35 @@ package Services;
 import java.util.*;
 public class Tables {
 	
-	private  ArrayList <Integer>table_number = new ArrayList((Integer)10);
+	//private  ArrayList <Integer>table_number = new ArrayList((Integer)10);
+	static  ArrayList <Tables> table_number = new ArrayList(10);
 	private int num_of_Seats;
 	private boolean isbooked;
 	private String client_name;
 	
-	public Tables(int num_of_Seats, boolean isbooked, String client_name) {
+	//public Tables(int num_of_Seats, boolean isbooked, String client_name) {
+		public Tables(int num_of_Seats) {
 		super();
 		this.num_of_Seats = num_of_Seats;
-		this.isbooked = isbooked;
-		this.client_name = client_name;
+		this.isbooked = false;
+		//this.client_name = client_name;
 	}
+		public void setItems(ArrayList <Tables> table_number) {
+			this.table_number = table_number;
+		}
 
-	public ArrayList<Integer> getTable_number() {
+		public ArrayList <Tables> getTables() {
+	        return table_number;
+	    }
+
+	/*public ArrayList<Integer> getTable_number() {
 		return table_number;
 	}
 
 	public void setTable_number(ArrayList<Integer> table_number) {
 		this.table_number = table_number;
 	}
-
+*/
 	public int getNum_of_Seats() {
 		return num_of_Seats;
 	}
@@ -41,12 +50,12 @@ public class Tables {
 		this.client_name = client_name;
 	}
 	
-	public void reserve_table(int tablenum) {
+	/*public void reserve_table(int tablenum) {
 		for(int i =0;i<10;i++) {
 			if (tablenum == table_number.get(i)) {
 				table_number.remove(i);
 				}
-		}
+		}*/
 		
 	/*public void table_depreserve(Object Client) {
 		//Client.getable()
@@ -55,4 +64,4 @@ public class Tables {
 	}
 	
 
-}
+

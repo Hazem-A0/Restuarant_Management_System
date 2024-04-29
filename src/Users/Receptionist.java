@@ -7,7 +7,7 @@ import java.util.*;
 
 
 public class Receptionist extends Users{
-	private ArrayList<Tables> tables;
+	private static ArrayList<Tables> tables;
     private ArrayList<Reservation> reservations;
     
 	public Receptionist(String name, String userName, String password, String role, int contactNumber) {
@@ -16,6 +16,10 @@ public class Receptionist extends Users{
         this.reservations = new ArrayList<>();
 	}
 
+	public static void set_tables (ArrayList<Tables> tables)
+	{
+		Receptionist.tables=tables;
+	}
 	 public void createReservation(Customer customer_name, LocalDateTime dateTime, int numSeats) {
 	        if (tablesAvailable(numSeats)) {
 	            Reservation reservation = new Reservation(customer_name, dateTime, numSeats);
@@ -43,14 +47,29 @@ public class Receptionist extends Users{
 	        return availableTables;
 	    }
     
-	 public void cancelReservation(Reservation reservation) {
+	 /*public void cancelReservation(Customer customer) {
 	        if (reservations.contains(reservation)) {
 	            reservations.remove(reservation);
 	            System.out.println("Reservation cancelled successfully.");
 	        } else {
 	            System.out.println("Reservation not found.");
 	        }
+	    }*/
+	 public void cancelReservation(Customer customer) {
+	 boolean reservationCanceled = false;
+	    Iterator<Reservation> iterator = reservations.iterator();
+	    while (iterator.hasNext()) {
+	        Reservation reservation = iterator.next();
+	        if (reservation.getCustomer().equals(customer)) {
+	            iterator.remove();
+	            reservationCanceled = true;
+	            System.out.println("Reservation canceled successfully for " + customer.getName());
+	        }
 	    }
+	    if (!reservationCanceled) {
+	        System.out.println("No reservations found for " + customer.getName() + ". Unable to cancel.");
+	    }
+	 }
 	 
 	 public List<Reservation> getReservations() {
 	        return reservations;

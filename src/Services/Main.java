@@ -10,6 +10,16 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+    	//Create tables
+    	Tables table1 = new Tables (3);
+    	Tables table2 = new Tables (4);
+    	Tables table3 = new Tables (5);
+    	Tables table4 = new Tables (2);
+    	ArrayList <Tables> tables = new ArrayList <Tables>(); 
+    	tables.add(table1);
+    	tables.add(table2);
+    	tables.add(table3);
+    	tables.add(table4);
         // Create menu items
         Menu_items item1 = new Menu_items("Main Course", "Spaghetti", 10);
         Menu_items item2 = new Menu_items( "Main dishes", "Pizza", 12);
@@ -24,6 +34,7 @@ public class Main {
 
         // Display menu
         System.out.println("Menu:");
+         menu.sort();
         for (Menu_items menuItem : menu.getItems()) {
             System.out.println(menuItem.getDishName() + " - $" + menuItem.getPrice());
         }
@@ -58,16 +69,18 @@ public class Main {
 
         // Receptionist creates a reservation
         Receptionist receptionist = new Receptionist("Receptionist", "receptionist", "password", "receptionist", 987654321);
+        Receptionist.set_tables(tables);
         receptionist.createReservation(customer, reservationDateTime, 4);
 
         // Display reservations
         System.out.println("\nReservations:");
         for (Reservation res : receptionist.getReservations()) {
             System.out.println(res.getCustomer().getName() + " - " + res.getReservationDateTime() + " - " + res.getNumberOfPeople() + " people");
-        }
+       }
 
         // Manager cancels a reservation
         Receptionist receptionist1 = new Receptionist("Manager", "manager", "password", "manager", 555555555);
-        receptionist1.cancelReservation(reservation);
+        //receptionist.cancelReservation(reservation);
+        receptionist.cancelReservation(customer);
     }
 }
