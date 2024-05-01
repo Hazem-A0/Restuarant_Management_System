@@ -2,7 +2,8 @@ package Services;
 import java.time.LocalDateTime;
 
 import Users.Customer;
-public class Reservation {
+public class Reservation  {
+	
 	private Customer customer;
     private LocalDateTime reservationDateTime;
     private int numberOfPeople;

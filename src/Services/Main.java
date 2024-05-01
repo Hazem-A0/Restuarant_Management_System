@@ -5,6 +5,7 @@ import Users.Customer;
 import Users.Receptionist;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -31,13 +32,15 @@ public class Main {
         menu.addItem(item1, managerInstance);
         menu.addItem(item2, managerInstance);
         menu.addItem(item3, managerInstance);
-
+       
         // Display menu
+        Collections.sort(menu.getItems());
         System.out.println("Menu:");
-         menu.sort();
-        for (Menu_items menuItem : menu.getItems()) {
-            System.out.println(menuItem.getDishName() + " - $" + menuItem.getPrice());
+        
+        for (Menu_items item : menu.getItems()) {
+        	System.out.println(item.getDishName() + " - $" + item.getPrice());
         }
+       
 
         // Create a customer
         Customer customer = new Customer("John Doe", "johndoe", "password", "customer", 123456789);
@@ -81,6 +84,6 @@ public class Main {
         // Manager cancels a reservation
         Receptionist receptionist1 = new Receptionist("Manager", "manager", "password", "manager", 555555555);
         //receptionist.cancelReservation(reservation);
-        receptionist.cancelReservation(customer);
+        receptionist.remove_object(customer);
     }
 }
