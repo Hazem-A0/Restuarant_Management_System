@@ -1,6 +1,8 @@
 package Services;
 import java.util.*;
 
+import Users.Customer;
+
 
 
 public class Order {
@@ -10,10 +12,10 @@ public class Order {
 	private OrderStatus status;
 	
 	
-	public Order(int order_id, String clientName) {
-		this.order_id = order_id;
-		this.clientName = clientName;
-		items = new ArrayList<>();
+	public Order(Customer customer, List<OrderItem> items) {
+		//this.order_id = order_id;
+		this.clientName = customer.getName();
+		this.items = items;
 		status = OrderStatus.PLACED;
 	}
 	

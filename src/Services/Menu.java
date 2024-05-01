@@ -13,14 +13,14 @@ public class Menu implements Removable {
 
 
 
-	protected void addItem(Menu_items item, manager manager) { //(Menu_items item, manager manager)
-
-        if (manager != null) {
+	//protected void addItem(Menu_items item, manager manager) { //(Menu_items item, manager manager)
+		protected void addItem(Menu_items item) {
+	//  if (manager != null) {
         	menuItems.add(item);
             System.out.println("Item '" + item.getDishName() + "' added to the menu.");
-        } else {
+       /* } else {
             System.out.println("Only manager can add items to the menu.");
-        }
+        }*/
     }
 
 	@Override

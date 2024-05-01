@@ -2,15 +2,19 @@ package Services;
 
 import java.util.List;
 
+import Users.Customer;
+
 public class Bill {
-    private int billId;
+    private static int billId;
     private int customerId;
+    private  Customer customer;
     private String paymentType;
     private Order order;
 
     // Constructor
-    public Bill(int billId, int customerId, String paymentType, Order order) {
+    public Bill(Customer customer, String paymentType, Order order) {
         this.billId = billId;
+        this.customer=customer;
         this.customerId = customerId;
         this.paymentType = paymentType;
         this.order = order;
@@ -34,7 +38,7 @@ public class Bill {
     // Function to process payment
     public void pay() {
         // Implementation for processing payment
-        System.out.println("Payment processed for Bill ID: " + billId);
+        System.out.println("Payment processed for Bill ID: " + billId++);
     }
 
     // Getters and setters
