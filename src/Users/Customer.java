@@ -1,17 +1,25 @@
 package Users;
+import Services.Bill;
+import Services.Menu_items;
 import Services.Order;
 import Services.OrderItem;
 import Services.OrderStatus;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends Users {
 	private boolean checkedIn;
 	private Order currentOrder;
 	private LocalDateTime lastVisitTime;
-	private List<OrderItem> items;
+	private List<OrderItem> currentOrderItems;
+	private Bill bill;
 	
-
+	public Customer(String name, String userName, String password, String role, int contactNumber) {
+		super(name, userName, password, role, contactNumber);
+		currentOrderItems = new ArrayList<>();
+		this.checkedIn=false;
+	}
 	public LocalDateTime getLastVisitTime() {
 		return lastVisitTime;
 	}
@@ -21,13 +29,37 @@ public class Customer extends Users {
 	}
 
 	public List<OrderItem> getItems() {
-		return items;
+		return currentOrderItems;
 	}
 
-	public void setItems(List<OrderItem> items) {
-		this.items = items;
-		
-	}
+	public void addToOrder(Menu_items item, int quantity) {
+        OrderItem orderItem = new OrderItem(item, quantity);
+        currentOrderItems.add(orderItem);
+        System.out.println("Added " + quantity + "x " + item.getDishName() + " to your order.");
+    }
+	
+    public void placeOrder(String paymentType) {
+        if (currentOrderItems.isEmpty()) {
+            System.out.println("Your order is empty. Please add items before placing the order.");
+            return;
+        }
+
+        currentOrder = new Order(this, currentOrderItems);
+        bill = new Bill( this, paymentType, currentOrder);
+        System.out.println("Order Details:");
+        System.out.println("Customer: " + this.getName());
+        System.out.println("Items:");
+        for (OrderItem item : currentOrderItems) {
+            Menu_items menuItem = item.getMenuItem();
+            int quantity = item.getQuantity();
+            System.out.println(quantity + "x " + menuItem.getDishName() + " - $" + (menuItem.getPrice() * quantity));
+        }
+        System.out.println("Total: $" + bill.totalPrice());
+        // Clear current order after placing it
+        currentOrderItems.clear();
+        System.out.println("Order placed successfully.");
+    }
+    
 
 	public void setCheckedIn(boolean checkedIn) {
 		this.checkedIn = checkedIn;
@@ -35,10 +67,7 @@ public class Customer extends Users {
 
 
 
-	public Customer(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
-		this.checkedIn=false;
-	}
+	
 
 	/*public int getCustomer_Id() {
 		return customer_Id;
@@ -47,10 +76,16 @@ public class Customer extends Users {
 	public void setCustomer_Id(int customer_Id) {
 		this.customer_Id = customer_Id;
 	}*/
+	
+	
 	public void checkIn() {
         checkedIn = true;
         System.out.println(name + " has checked in.");
     }
+	
+	public Bill getBill() {
+		return bill;
+	}
 	
 	public void checkOut() {
         checkedIn = false;

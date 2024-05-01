@@ -1,12 +1,13 @@
 package Users;
 import Services.Tables;
+import Services.Removable;
 import Services.Reservation;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
 
-public class Receptionist extends Users{
+public class Receptionist extends Users implements Removable{
 	private static ArrayList<Tables> tables;
     private ArrayList<Reservation> reservations;
     
@@ -55,19 +56,19 @@ public class Receptionist extends Users{
 	            System.out.println("Reservation not found.");
 	        }
 	    }*/
-	 public void cancelReservation(Customer customer) {
+	 public void remove_object (Object customer) {
 	 boolean reservationCanceled = false;
 	    Iterator<Reservation> iterator = reservations.iterator();
 	    while (iterator.hasNext()) {
 	        Reservation reservation = iterator.next();
-	        if (reservation.getCustomer().equals(customer)) {
+	        if (reservation.getCustomer().equals((Customer)customer)) {
 	            iterator.remove();
 	            reservationCanceled = true;
-	            System.out.println("Reservation canceled successfully for " + customer.getName());
+	            System.out.println("Reservation canceled successfully for " + ((Customer) customer).getName());
 	        }
 	    }
 	    if (!reservationCanceled) {
-	        System.out.println("No reservations found for " + customer.getName() + ". Unable to cancel.");
+	        System.out.println("No reservations found for " + ((Customer)customer).getName() + ". Unable to cancel.");
 	    }
 	 }
 	 

@@ -12,12 +12,12 @@ public final class Waiter extends Users {
 		super(name, userName, password, role, contactNumber);
 	}
 
-	public Order createOrder(ArrayList<OrderItem> items , int ID,String name) {
+	/*public Order createOrder(ArrayList<OrderItem> items , int ID,String name) {
         Order order = new Order(ID,name);
         for (OrderItem item : items) {
             order.addItem(item);
         }
         System.out.println("Order created successfully.");
         return order;
-    }
+    }*/
 }
