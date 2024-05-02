@@ -11,6 +11,9 @@ import java.util.List;
 import GUI.HomePage;
 import GUI.SceneController;
 import GUI.LoginPage;
+import GUI.OrderPage;
+import GUI.ReservationPage;
+
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -81,20 +84,36 @@ public class Main extends Application {
                                         + res.getNumberOfPeople() + " people");
                 }
 
-                // Manager cancels a reservation
-                Receptionist receptionist1 = new Receptionist("Manager", "manager", "password", "manager", 555555555);
-                // receptionist.cancelReservation(reservation);
-                receptionist.cancelReservation(customer);
-
                 launch(args);
         }
 
         @Override
         public void start(Stage primaryStage) throws Exception {
                 try {
+                        Customer customer1 = new Customer("John Doe", "johndoe1", "password", "customer", 123456789);
+                        Customer customer2 = new Customer("Hazem", "hazem", "hazem2", "customer", 123456689);
+                        Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
 
-                        HomePage homePage = new HomePage();
-                        Scene scene = homePage.getScene();
+                        // Create a reservation
+                        LocalDateTime reservationDateTime = LocalDateTime.now().plusDays(1);
+                        Reservation[] reservations = { new Reservation(customer1, reservationDateTime, 4) };
+                        // HomePage homePage = new HomePage();
+                        // Scene scene = homePage.getScene();
+                        // Create menu items
+                        Menu_items item1 = new Menu_items("Main Course", "Spaghetti", 10);
+                        Menu_items item2 = new Menu_items("Main dishes", "Pizza", 12);
+                        Menu_items item3 = new Menu_items("Salads", "Salad", 6);
+
+                        // Create a menu
+                        Menu menu = new Menu();
+                        manager managerInstance = new manager("John Doe", "manager", "password", "manager", 1205495697);
+                        menu.addItem(item1);
+                        menu.addItem(item2);
+                        menu.addItem(item3);
+
+                        OrderPage orderPage = new OrderPage(menu, customer2);
+
+                        Scene scene = orderPage.getScene();
                         primaryStage.setTitle("Restaurant Management System");
                         primaryStage.setScene(scene);
                         primaryStage.setResizable(false);
