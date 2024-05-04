@@ -44,6 +44,7 @@ public class Tables {
 	public void setClient_name(String client_name) {
 		this.client_name = client_name;
 	}
+}
 	
 	
 	
