@@ -3,7 +3,9 @@ import java.util.*;
 public class Tables {
 	
 	//private  ArrayList <Integer>table_number = new ArrayList((Integer)10);
-	static  ArrayList <Tables> table_number = new ArrayList(10);
+		//static  ArrayList <Tables> table_number = new ArrayList(10);
+	Integer[] tableNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	private  ArrayList <Tables>table_number = new ArrayList(List.of(tableNumbers));
 	private int num_of_Seats;
 	private boolean isbooked;
 	private String client_name;
@@ -23,14 +25,7 @@ public class Tables {
 	        return table_number;
 	    }
 
-	/*public ArrayList<Integer> getTable_number() {
-		return table_number;
-	}
-
-	public void setTable_number(ArrayList<Integer> table_number) {
-		this.table_number = table_number;
-	}
-*/
+	
 	public int getNum_of_Seats() {
 		return num_of_Seats;
 	}
@@ -50,18 +45,7 @@ public class Tables {
 		this.client_name = client_name;
 	}
 	
-	/*public void reserve_table(int tablenum) {
-		for(int i =0;i<10;i++) {
-			if (tablenum == table_number.get(i)) {
-				table_number.remove(i);
-				}
-		}*/
-		
-	/*public void table_depreserve(Object Client) {
-		//Client.getable()
-	} // get table user preserved and readd it to array of tables*/
-		
-	}
+	
 	
 
 
