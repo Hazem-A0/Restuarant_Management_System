@@ -24,7 +24,7 @@ public class HomePage {
         Text title = new Text("Eat My Ass\nRestaurant and Cafe");
         title.setId("title");
 
-        Image image = new Image("resources/logo.png");
+        Image image = new Image("GUI/logo.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(200);
         imageView.setFitWidth(200);

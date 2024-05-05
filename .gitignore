@@ -2,4 +2,3 @@
 /src/*.class
 /src/*/*.class
 /.vscode/
-*.classpath
