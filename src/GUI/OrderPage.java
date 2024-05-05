@@ -52,18 +52,18 @@ public class OrderPage {
 
         // Place Title on the top
         VBox hbox_title = new VBox();
-        Text title = new Text("Eat My Ass\nRestaurant and Cafe");
+        Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
 
-        Image image = new Image("GUI/logo.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(200);
-        imageView.setFitWidth(200);
-        imageView.setPreserveRatio(true);
-        hbox_title.getChildren().add(title);
-        hbox_title.getChildren().add(imageView);
-        hbox_title.setId("headercontainer");
-        root.setTop(hbox_title);
+//        Image image = new Image("GUI/logo.png");
+//        ImageView imageView = new ImageView(image);
+//        imageView.setFitHeight(200);
+//        imageView.setFitWidth(200);
+//        imageView.setPreserveRatio(true);
+//        hbox_title.getChildren().add(title);
+//        hbox_title.getChildren().add(imageView);
+//        hbox_title.setId("headercontainer");
+//        root.setTop(hbox_title);
 
         VBox layout = new VBox();
         // Add item dropdown
