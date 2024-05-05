@@ -35,9 +35,6 @@ public class HomePage {
         root.setTop(hbox_title);
 
         // Place buttons in the center
-        Button menu_button = new Button("Menu");
-        Button order_button = new Button("Orders");
-        Button reservation_button = new Button("Reservations");
         Button login_button = new Button("Login");
         Button register_button = new Button("Register");
 
@@ -48,9 +45,16 @@ public class HomePage {
             }
         });
 
+        register_button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                SceneController.gotoRegister(event);
+            }
+        });
+
         // Place buttons in the center
         VBox hbox = new VBox();
-        hbox.getChildren().addAll(menu_button, order_button, reservation_button, login_button, register_button);
+        hbox.getChildren().addAll(login_button, register_button);
         hbox.setId("center");
         root.setCenter(hbox);
 

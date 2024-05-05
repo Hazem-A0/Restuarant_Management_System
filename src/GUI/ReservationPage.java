@@ -11,8 +11,16 @@ import javafx.event.ActionEvent;
 import Users.Users;
 import Services.Reservation;
 import Users.Customer;
+import Users.Receptionist;
 
 public class ReservationPage {
+    private Receptionist receptionist;
+    private Customer customer;
+
+    public ReservationPage(Receptionist receptionist, Customer customer) {
+        this.receptionist = receptionist;
+        this.customer = customer;
+    }
 
     public void cancelButtonClicked(ActionEvent e) {
         // TODO: Implement cancel reservation
@@ -23,11 +31,11 @@ public class ReservationPage {
         // TODO: Implement make reservation
     }
 
-    public Scene getScene(Stage stage, Customer customer, Reservation[] reservations) {
+    public Scene getScene() {
         VBox layout = new VBox();
-        Scene scene = new Scene(layout, 300, 250);
+        Scene scene = new Scene(layout, 800, 600);
         boolean hasReservations = false;
-        for (Reservation reservation : reservations) {
+        for (Reservation reservation : receptionist.getReservations()) {
             if (reservation.getCustomer().equals(customer)) {
                 Label reservationLabel = new Label("Reservation: " + reservation.getReservationDateTime() + " for "
                         + reservation.getNumberOfPeople() + " people");

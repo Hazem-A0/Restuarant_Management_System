@@ -3,6 +3,10 @@ package GUI;
 import GUI.LoginPage;
 import GUI.HomePage;
 import GUI.ReservationPage;
+import Services.Menu;
+import Services.Reservation;
+import Users.Customer;
+import Users.Receptionist;
 import GUI.OrderPage;
 
 import javafx.event.ActionEvent;
@@ -14,34 +18,62 @@ public class SceneController {
     private static Scene scene;
     private static Stage stage;
     private static Parent root;
-
-    private static HomePage homePage = new HomePage();
-    private static LoginPage loginPage = new LoginPage();
-    private static ReservationPage reservationPage = new ReservationPage();
+    private static Menu menu;
+    private static Customer customer;
+    private static Receptionist receptionist;
+    private static Customer[] registeredCustomers;
 
     public static void setStage(Stage stage_) {
         stage = stage_;
     }
 
+    public static void setMenu(Menu menu_) {
+        menu = menu_;
+    }
+
+    public static void setCustomer(Customer customer) {
+        SceneController.customer = customer;
+    }
+
+    public static void setReceptionist(Receptionist receptionist) {
+        SceneController.receptionist = receptionist;
+    }
+
+    public static void setRegisteredCustomers(Customer[] registeredCustomers) {
+        SceneController.registeredCustomers = registeredCustomers;
+    }
+
+    public static Customer[] getRegisteredCustomers() {
+        return registeredCustomers;
+    }
+
     public static void gotoLogin(ActionEvent event) {
+        LoginPage loginPage = new LoginPage();
         scene = loginPage.getScene();
         stage.setScene(scene);
-        // stage.show();
     }
 
     public static void gotoHome(ActionEvent event) {
+        HomePage homePage = new HomePage();
         scene = homePage.getScene();
         stage.setScene(scene);
-        // stage.show();
     }
 
-    // public static void gotoReservation(ActionEvent event) {
-    // scene = reservationPage.getScene();
-    // stage.setScene(scene);
-    // // stage.show();
-    // }
+    public static void gotoRegister(ActionEvent event) {
+        RegisterPage registerPage = new RegisterPage();
+        scene = registerPage.getScene();
+        stage.setScene(scene);
+    }
+
+    public static void gotoReservation(ActionEvent event) {
+        ReservationPage reservationPage = new ReservationPage(SceneController.receptionist, SceneController.customer);
+        scene = reservationPage.getScene();
+        stage.setScene(scene);
+    }
 
     public static void gotoOrderPage(ActionEvent event) {
-        System.out.println("Order Page");
+        OrderPage orderPage = new OrderPage(SceneController.menu, SceneController.customer);
+        scene = orderPage.getScene();
+        stage.setScene(scene);
     }
 }

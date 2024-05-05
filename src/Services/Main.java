@@ -90,15 +90,17 @@ public class Main extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception {
                 try {
-                        Customer customer1 = new Customer("John Doe", "johndoe1", "password", "customer", 123456789);
-                        Customer customer2 = new Customer("Hazem", "hazem", "hazem2", "customer", 123456689);
-                        Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
+                        // Create tables
+                        Tables table1 = new Tables(3);
+                        Tables table2 = new Tables(4);
+                        Tables table3 = new Tables(5);
+                        Tables table4 = new Tables(2);
+                        ArrayList<Tables> tables = new ArrayList<Tables>();
+                        tables.add(table1);
+                        tables.add(table2);
+                        tables.add(table3);
+                        tables.add(table4);
 
-                        // Create a reservation
-                        LocalDateTime reservationDateTime = LocalDateTime.now().plusDays(1);
-                        Reservation[] reservations = { new Reservation(customer1, reservationDateTime, 4) };
-                        // HomePage homePage = new HomePage();
-                        // Scene scene = homePage.getScene();
                         // Create menu items
                         Menu_items item1 = new Menu_items("Main Course", "Spaghetti", 10);
                         Menu_items item2 = new Menu_items("Main dishes", "Pizza", 12);
@@ -111,9 +113,38 @@ public class Main extends Application {
                         menu.addItem(item2);
                         menu.addItem(item3);
 
-                        OrderPage orderPage = new OrderPage(menu, customer2);
+                        // Display menu
+                        Collections.sort(menu.getItems());
+                        System.out.println("Menu:");
 
-                        Scene scene = orderPage.getScene();
+                        for (Menu_items item : menu.getItems()) {
+                                System.out.println(item.getDishName() + " - $" + item.getPrice());
+                        }
+
+                        // Create a customer
+                        Customer customer1 = new Customer("John Doe", "johndoe1", "password", "customer", 123456789);
+                        Customer customer2 = new Customer("Hazem", "hazem", "hazem2", "customer", 123456689);
+                        Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
+
+                        Customer[] registeredCustomers = { customer1, customer2, customer3 };
+                        // Create a reservation
+                        LocalDateTime reservationDateTime = LocalDateTime.now().plusDays(1);
+                        Reservation reservation = new Reservation(customer1, reservationDateTime, 4);
+
+                        // Receptionist creates a reservation
+                        Receptionist receptionist = new Receptionist("Receptionist", "receptionist", "password",
+                                        "receptionist",
+                                        987654321);
+                        Receptionist.set_tables(tables);
+                        receptionist.createReservation(customer1, reservationDateTime, 4);
+
+                        SceneController.setMenu(menu);
+                        SceneController.setReceptionist(receptionist);
+                        SceneController.setRegisteredCustomers(registeredCustomers);
+
+                        HomePage homePage = new HomePage();
+
+                        Scene scene = homePage.getScene();
                         primaryStage.setTitle("Restaurant Management System");
                         primaryStage.setScene(scene);
                         primaryStage.setResizable(false);

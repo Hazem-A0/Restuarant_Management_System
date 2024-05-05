@@ -27,8 +27,6 @@ public class OrderPage {
             Menu menu, Customer customer) {
         this.customer = customer;
         this.menu = menu;
-        OrderItem orderItem = new OrderItem(menu.getItems().get(0), 1);
-        orderItems.add(orderItem);
         menuItemStrings = new String[menu.getItems().size()];
         for (int i = 0; i < menu.getItems().size(); i++) {
             menuItemStrings[i] = menu.getItems().get(i).toString();
@@ -45,7 +43,7 @@ public class OrderPage {
 
     public Scene getScene() {
         VBox layout = new VBox();
-        Scene scene = new Scene(layout, 300, 250);
+        Scene scene = new Scene(layout, 800, 600);
 
         // Add item dropdown
         ComboBox<String> itemDropdown = new ComboBox<String>();

@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import GUI.SceneController;
+import Users.Customer;
 
 public class LoginPage {
     public Scene getScene() {
@@ -44,11 +45,21 @@ public class LoginPage {
         Button home_button = new Button("Home");
 
         // control button
-        login_button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Login button clicked");
+        login_button.setOnAction(ev -> {
+            boolean userFound = false;
+            for (Customer registeredCustomer : SceneController.getRegisteredCustomers()) {
+                if (registeredCustomer.getUserName().equals(username.getText())) {
+                    userFound = true;
+                    if (registeredCustomer.getPassword().equals(password.getText())) {
+                        SceneController.setCustomer(registeredCustomer);
+                        SceneController.gotoReservation(ev);
+                    } else {
+                        System.out.println("WRONG PASSWORD!!!");
+                    }
+                }
             }
+            if (userFound == false)
+                System.out.println("USERNAME NOT FOUND!");
         });
 
         home_button.setOnAction(new EventHandler<ActionEvent>() {
