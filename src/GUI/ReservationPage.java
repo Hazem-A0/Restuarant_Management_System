@@ -4,9 +4,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import Users.Users;
 import Services.Reservation;
@@ -32,8 +36,27 @@ public class ReservationPage {
     }
 
     public Scene getScene() {
+        BorderPane root = new BorderPane();
+        Scene scene = new Scene(root, 800, 600);
+        root.setId("background");
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+        // Place Title on the top
+        VBox hbox_title = new VBox();
+        Text title = new Text("Eat My Ass\nRestaurant and Cafe");
+        title.setId("title");
+
+        Image image = new Image("resources/logo.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        imageView.setPreserveRatio(true);
+        hbox_title.getChildren().add(title);
+        hbox_title.getChildren().add(imageView);
+        hbox_title.setId("headercontainer");
+        root.setTop(hbox_title);
+
         VBox layout = new VBox();
-        Scene scene = new Scene(layout, 800, 600);
         boolean hasReservations = false;
         for (Reservation reservation : receptionist.getReservations()) {
             if (reservation.getCustomer().equals(customer)) {
@@ -64,7 +87,8 @@ public class ReservationPage {
 
         Button homeButton = new Button("Home");
         homeButton.setOnAction(e -> SceneController.gotoHome(e));
-        layout.getChildren().add(homeButton);
+        layout.setId("center");
+        root.setCenter(layout);
         return scene;
     }
 }

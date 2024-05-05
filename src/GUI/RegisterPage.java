@@ -19,7 +19,7 @@ public class RegisterPage {
 
         // Place Title on the top
         VBox hbox_title = new VBox();
-        Text title = new Text("Restaurant Management System");
+        Text title = new Text("Eat My Ass\nRestaurant and Cafe");
         title.setId("title");
 
         Image image = new Image("resources/logo.png");

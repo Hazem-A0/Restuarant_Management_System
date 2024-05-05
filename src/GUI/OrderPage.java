@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import Services.OrderItem;
@@ -42,9 +45,27 @@ public class OrderPage {
     }
 
     public Scene getScene() {
-        VBox layout = new VBox();
-        Scene scene = new Scene(layout, 800, 600);
+        BorderPane root = new BorderPane();
+        Scene scene = new Scene(root, 800, 600);
+        root.setId("background");
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+        // Place Title on the top
+        VBox hbox_title = new VBox();
+        Text title = new Text("Eat My Ass\nRestaurant and Cafe");
+        title.setId("title");
+
+        Image image = new Image("resources/logo.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        imageView.setPreserveRatio(true);
+        hbox_title.getChildren().add(title);
+        hbox_title.getChildren().add(imageView);
+        hbox_title.setId("headercontainer");
+        root.setTop(hbox_title);
+
+        VBox layout = new VBox();
         // Add item dropdown
         ComboBox<String> itemDropdown = new ComboBox<String>();
         itemDropdown.getItems().addAll(menuItemStrings);
@@ -64,12 +85,15 @@ public class OrderPage {
 
             // Show currently selected items with option to remove or change quantity
             HBox itemLayout = new HBox();
-            Text itemName = new Text(item.getMenuItem().getDishName());
-            Text itemPrice = new Text("Price: " + item.getMenuItem().getPrice());
-            Text itemQuantity = new Text("Quantity: " + item.getQuantity());
+            Text itemName = new Text(item.getMenuItem().getDishName() + "\t");
+            Text itemPrice = new Text("Price: " + item.getMenuItem().getPrice() + "\t");
+            Text itemQuantity = new Text("Quantity: " + item.getQuantity() + "\t");
             Button removeButton = new Button("Remove");
             Button changeQuantityButton = new Button("Change quantity");
-
+            itemLayout.setId("order");
+            itemName.setId("orderitem");
+            itemPrice.setId("orderitem");
+            itemQuantity.setId("orderitem");
             removeButton.setOnAction(e -> {
                 orderItems.remove(item);
                 layout.getChildren().remove(itemLayout);
@@ -89,6 +113,7 @@ public class OrderPage {
         Button orderButton = new Button("Order");
         orderButton.setOnAction(e -> orderButtonClicked(e));
         layout.getChildren().add(orderButton);
+        root.setCenter(layout);
 
         return scene;
     }

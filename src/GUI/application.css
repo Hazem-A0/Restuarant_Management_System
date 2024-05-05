@@ -37,3 +37,23 @@
   -fx-spacing: 30px;
   -fx-background-color: #633dc0;
 }
+
+#headercontainer {
+  -fx-alignment: center;
+  -fx-padding: 20px;
+  -fx-text-alignment: center;
+  -fx-spacing: 30px;
+  -fx-background-color: #633dc0;
+}
+
+#order {
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}
+
+#orderitem {
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+}

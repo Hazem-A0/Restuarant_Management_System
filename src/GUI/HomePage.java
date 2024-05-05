@@ -17,11 +17,11 @@ public class HomePage {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 800, 600);
         root.setId("background");
-        // scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Place Title on the top
         VBox hbox_title = new VBox();
-        Text title = new Text("Restaurant Management System");
+        Text title = new Text("Eat My Ass\nRestaurant and Cafe");
         title.setId("title");
 
         Image image = new Image("resources/logo.png");
@@ -31,7 +31,7 @@ public class HomePage {
         imageView.setPreserveRatio(true);
         hbox_title.getChildren().add(title);
         hbox_title.getChildren().add(imageView);
-        hbox_title.setId("top");
+        hbox_title.setId("headercontainer");
         root.setTop(hbox_title);
 
         // Place buttons in the center

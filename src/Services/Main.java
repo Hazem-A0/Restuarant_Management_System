@@ -145,7 +145,7 @@ public class Main extends Application {
                         HomePage homePage = new HomePage();
 
                         Scene scene = homePage.getScene();
-                        primaryStage.setTitle("Restaurant Management System");
+                        primaryStage.setTitle("Eat My Ass\nRestaurant and Cafe");
                         primaryStage.setScene(scene);
                         primaryStage.setResizable(false);
                         SceneController.setStage(primaryStage);
