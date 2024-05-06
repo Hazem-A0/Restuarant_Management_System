@@ -137,6 +137,23 @@ public class Main extends Application {
                                         987654321);
                         Receptionist.set_tables(tables);
                         receptionist.createReservation(customer1, reservationDateTime, 4);
+                        
+                     // Create a list of order items
+                        ArrayList<OrderItem> orderItems = new ArrayList<>();
+                        orderItems.add(new OrderItem(item1, 2)); // Example: Add 2 portions of item1 to the order
+                        orderItems.add(new OrderItem(item2, 1)); // Example: Add 1 portion of item2 to the order
+
+                        // Create an Order for the customer
+                        Order order = new Order(customer1, orderItems);
+
+                        // Create a Bill for the customer's order
+                        Bill bill = new Bill(customer1, "Cash", order);
+
+                        // Calculate the total bill
+                        double totalBill = bill.totalPrice();
+
+                        // Print the total bill
+                        System.out.println("Total Bill for " + customer1.getName() + ": $" + totalBill);
 
                         SceneController.setMenu(menu);
                         SceneController.setReceptionist(receptionist);
