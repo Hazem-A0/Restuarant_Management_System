@@ -1,29 +1,27 @@
 package GUI;
 
-import Users.Customer;
-import javafx.scene.layout.VBox;
 import Services.Menu;
 import Services.Order;
+import Services.OrderItem;
+import Services.Menu_items;
+import Users.Customer;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import Services.OrderItem;
-import Services.Menu_items;
-
 public class OrderPage {
     private Menu menu;
     private Customer customer;
-    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+    private List<OrderItem> orderItems = new ArrayList<>();
     private String[] menuItemStrings;
 
     public OrderPage(
@@ -36,7 +34,7 @@ public class OrderPage {
         }
     }
 
-    public void orderButtonClicked(javafx.event.ActionEvent e) {
+    public void orderButtonClicked(javafx.event.ActionEvent e, String paymentMethod) {
         System.out.println("Order button clicked");
         System.out.println("Order items:");
         double totalPrice = 0.0;
@@ -45,8 +43,8 @@ public class OrderPage {
             totalPrice += item.getMenuItem().getPrice() * item.getQuantity();
         }
         System.out.println("Total Price: $" + totalPrice);
+        System.out.println("Payment Method: " + paymentMethod);
     }
-
 
     public Scene getScene() {
         BorderPane root = new BorderPane();
@@ -59,19 +57,9 @@ public class OrderPage {
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
 
-//        Image image = new Image("GUI/logo.png");
-//        ImageView imageView = new ImageView(image);
-//        imageView.setFitHeight(200);
-//        imageView.setFitWidth(200);
-//        imageView.setPreserveRatio(true);
-//        hbox_title.getChildren().add(title);
-//        hbox_title.getChildren().add(imageView);
-//        hbox_title.setId("headercontainer");
-//        root.setTop(hbox_title);
-
         VBox layout = new VBox();
         // Add item dropdown
-        ComboBox<String> itemDropdown = new ComboBox<String>();
+        ComboBox<String> itemDropdown = new ComboBox<>();
         itemDropdown.getItems().addAll(menuItemStrings);
         itemDropdown.setValue(menuItemStrings[0]);
 
@@ -113,10 +101,14 @@ public class OrderPage {
 
         layout.getChildren().addAll(itemDropdown, quantityField, addItemButton);
 
+        // Payment method
+        CheckBox cashCheckBox = new CheckBox("Cash");
+        CheckBox visaCheckBox = new CheckBox("Visa");
+
         // Add order button
         Button orderButton = new Button("Order");
-        orderButton.setOnAction(e -> orderButtonClicked(e));
-        layout.getChildren().add(orderButton);
+        orderButton.setOnAction(e -> orderButtonClicked(e, cashCheckBox.isSelected() ? "Cash" : (visaCheckBox.isSelected() ? "Visa" : "Unknown")));
+        layout.getChildren().addAll(cashCheckBox, visaCheckBox, orderButton);
         root.setCenter(layout);
 
         return scene;
