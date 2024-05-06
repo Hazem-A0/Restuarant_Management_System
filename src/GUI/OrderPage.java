@@ -1,7 +1,6 @@
 package GUI;
 
 import Services.Menu;
-import Services.Order;
 import Services.OrderItem;
 import Services.Menu_items;
 import Users.Customer;
@@ -23,6 +22,7 @@ public class OrderPage {
     private Customer customer;
     private List<OrderItem> orderItems = new ArrayList<>();
     private String[] menuItemStrings;
+    private TextField totalPriceField; // Added field to display total price
 
     public OrderPage(
             Menu menu, Customer customer) {
@@ -44,6 +44,9 @@ public class OrderPage {
         }
         System.out.println("Total Price: $" + totalPrice);
         System.out.println("Payment Method: " + paymentMethod);
+
+        // Set total price in the text field
+        totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
     }
 
     public Scene getScene() {
@@ -75,6 +78,9 @@ public class OrderPage {
             OrderItem item = new OrderItem(selectedItem, quantity);
             orderItems.add(item);
 
+            // Update total price when an item is added
+            updateTotalPrice();
+
             // Show currently selected items with option to remove or change quantity
             HBox itemLayout = new HBox();
             Text itemName = new Text(item.getMenuItem().getDishName() + "\t");
@@ -89,6 +95,7 @@ public class OrderPage {
             removeButton.setOnAction(e -> {
                 orderItems.remove(item);
                 layout.getChildren().remove(itemLayout);
+                updateTotalPrice(); // Update total price when an item is removed
             });
 
             changeQuantityButton.setOnAction(e -> {
@@ -109,8 +116,22 @@ public class OrderPage {
         Button orderButton = new Button("Order");
         orderButton.setOnAction(e -> orderButtonClicked(e, cashCheckBox.isSelected() ? "Cash" : (visaCheckBox.isSelected() ? "Visa" : "Unknown")));
         layout.getChildren().addAll(cashCheckBox, visaCheckBox, orderButton);
-        root.setCenter(layout);
 
+        // Add total price text field
+        totalPriceField = new TextField();
+        totalPriceField.setEditable(false);
+        layout.getChildren().add(totalPriceField);
+
+        root.setCenter(layout);
         return scene;
+    }
+
+    // Method to update total price
+    private void updateTotalPrice() {
+        double totalPrice = 0.0;
+        for (OrderItem item : orderItems) {
+            totalPrice += item.getMenuItem().getPrice() * item.getQuantity();
+        }
+        totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
     }
 }
