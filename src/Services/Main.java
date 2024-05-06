@@ -122,8 +122,8 @@ public class Main extends Application {
                         }
 
                         // Create a customer
-                        Customer customer1 = new Customer("John Doe", "johndoe1", "password", "customer", 123456789);
-                        Customer customer2 = new Customer("Hazem", "hazem", "hazem2", "customer", 123456689);
+                        Customer customer1 = new Customer("Hazem", "hazem1", "password", "customer", 123456789);
+                        Customer customer2 = new Customer("Amin", "amin2", "hazem2", "customer", 123456689);
                         Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
 
                         Customer[] registeredCustomers = { customer1, customer2, customer3 };
