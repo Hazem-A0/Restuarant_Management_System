@@ -110,7 +110,11 @@ public class OrderPage {
 
         // Payment method
         CheckBox cashCheckBox = new CheckBox("Cash");
+        cashCheckBox.setId("cashCheckBox"); // Set ID for CSS styling
+
         CheckBox visaCheckBox = new CheckBox("Visa");
+        visaCheckBox.setId("visaCheckBox"); // Set ID for CSS styling
+
 
         // Add order button
         Button orderButton = new Button("Order");

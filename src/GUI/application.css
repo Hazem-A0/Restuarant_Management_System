@@ -59,3 +59,7 @@
 #orderitem {
     -fx-fill: white;
 }
+
+#cashCheckBox, #visaCheckBox {
+    -fx-text-fill: white;
+}

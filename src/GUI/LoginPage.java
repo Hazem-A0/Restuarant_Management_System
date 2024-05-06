@@ -55,12 +55,12 @@ public class LoginPage {
                         SceneController.setCustomer(registeredCustomer);
                         SceneController.gotoReservation(ev);
                     } else {
-                        System.out.println("WRONG PASSWORD!!!");
+                        System.out.println("Username or Password is incorrect");
                     }
                 }
             }
             if (userFound == false)
-                System.out.println("USERNAME NOT FOUND!");
+                System.out.println("Username or Password is incorrect");
         });
 
         home_button.setOnAction(new EventHandler<ActionEvent>() {
