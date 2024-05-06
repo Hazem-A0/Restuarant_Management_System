@@ -122,6 +122,14 @@ public class OrderPage {
         totalPriceField.setEditable(false);
         layout.getChildren().add(totalPriceField);
 
+        // Add cancel order button
+        Button cancelOrderButton = new Button("Cancel Order");
+        cancelOrderButton.setOnAction(e -> {
+            // Navigate back to homepage
+            SceneController.gotoHomePage(e);
+        });
+        layout.getChildren().add(cancelOrderButton);
+
         root.setCenter(layout);
         return scene;
     }

@@ -76,4 +76,10 @@ public class SceneController {
         scene = orderPage.getScene();
         stage.setScene(scene);
     }
+    public static void gotoHomePage(ActionEvent event) {
+        HomePage homePage = new HomePage();
+        scene = homePage.getScene();
+        stage.setScene(scene);
+    }
+
 }
