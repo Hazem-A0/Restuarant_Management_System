@@ -47,13 +47,11 @@
 }
 
 #order {
-  -fx-text-fill: #ffffff;
-  -fx-font-size: 14px;
-  -fx-font-weight: bold;
+    -fx-background-color: #333333;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
 }
 
 #orderitem {
-  -fx-text-fill: #ffffff;
-  -fx-font-size: 14px;
-  -fx-font-weight: bold;
+    -fx-fill: white;
 }
