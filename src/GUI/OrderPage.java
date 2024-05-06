@@ -39,10 +39,14 @@ public class OrderPage {
     public void orderButtonClicked(javafx.event.ActionEvent e) {
         System.out.println("Order button clicked");
         System.out.println("Order items:");
+        double totalPrice = 0.0;
         for (OrderItem item : orderItems) {
             System.out.println(item.getMenuItem().getDishName() + " x" + item.getQuantity());
+            totalPrice += item.getMenuItem().getPrice() * item.getQuantity();
         }
+        System.out.println("Total Price: $" + totalPrice);
     }
+
 
     public Scene getScene() {
         BorderPane root = new BorderPane();
