@@ -49,7 +49,7 @@ public class Main extends Application {
 
                 // Create a menu
                 Menu menu = new Menu();
-                manager managerInstance = new manager("John Doe", "manager", "password", "manager", 1205495697);
+                manager managerInstance = new manager("George", "manager", "password", "manager", 1205495697);
                 menu.addItem(item1);
                 menu.addItem(item2);
                 menu.addItem(item3);
@@ -63,8 +63,8 @@ public class Main extends Application {
                 }
 
                 // Create a customer
-                Customer customer1 = new Customer("John Doe", "johndoe1", "password", "customer", 123456789);
-                Customer customer2 = new Customer("Hazem", "hazem", "hazem2", "customer", 123456689);
+                Customer customer1 = new Customer("Hazem", "Hazem", "password", "customer", 123456789);
+                Customer customer2 = new Customer("Amin", "Amin", "password", "customer", 123456689);
                 Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
 
                 // Create a reservation
@@ -108,7 +108,7 @@ public class Main extends Application {
 
                         // Create a menu
                         Menu menu = new Menu();
-                        manager managerInstance = new manager("John Doe", "manager", "password", "manager", 1205495697);
+                        manager managerInstance = new manager("George", "manager", "password", "manager", 1205495697);
                         menu.addItem(item1);
                         menu.addItem(item2);
                         menu.addItem(item3);
