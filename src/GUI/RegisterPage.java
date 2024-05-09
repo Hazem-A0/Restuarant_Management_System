@@ -16,7 +16,7 @@ public class RegisterPage {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 800, 600);
         root.setId("background");
-
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         // Place Title on the top
         VBox hbox_title = new VBox();
         Text title = new Text("NPC Restaurant and Cafe");
