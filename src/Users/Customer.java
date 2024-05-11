@@ -15,6 +15,7 @@ public class Customer extends Users {
 	private List<OrderItem> currentOrderItems;
 	private Bill bill;
 	
+	
 	public Customer(String name, String userName, String password, String role, int contactNumber) {
 		super(name, userName, password, role, contactNumber);
 		currentOrderItems = new ArrayList<>();
@@ -68,16 +69,6 @@ public class Customer extends Users {
 
 
 	
-
-	/*public int getCustomer_Id() {
-		return customer_Id;
-	}
-
-	public void setCustomer_Id(int customer_Id) {
-		this.customer_Id = customer_Id;
-	}*/
-	
-	
 	public void checkIn() {
         checkedIn = true;
         System.out.println(name + " has checked in.");
@@ -128,6 +119,11 @@ public class Customer extends Users {
     public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
     }
+	@Override
+	public void displayInfo() {
+		
+		super.displayInfo();
+	}
     
 	
 

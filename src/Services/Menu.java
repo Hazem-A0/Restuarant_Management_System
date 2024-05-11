@@ -22,7 +22,10 @@ public class Menu implements Removable {
             System.out.println("Only manager can add items to the menu.");
         }*/
     }
-
+		 /* public void removeMenuItem(Menu_items item) {
+		        menuItems.remove(item);
+		        System.out.println("Item '" + item.getDishName() + "' removed from the menu.");
+		    }*/
 	@Override
 	public void remove_object (Object item) {
         	menuItems.remove((Menu_items)item);
@@ -44,6 +47,12 @@ public class Menu implements Removable {
 	 public List<Menu_items> getItems() {
 	        return menuItems;
 	    }
+	/* public static Menu getInstance() {
+	        if (instance == null) {
+	            instance = new Menu();
+	        }
+	        return instance;
+	    }*/
 
 
 

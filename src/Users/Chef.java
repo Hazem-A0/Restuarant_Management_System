@@ -8,21 +8,22 @@ public final class Chef extends Users {
     
     
 
-	public Chef(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
-	}
+	private double salary;
 
-	public void takeOrder(Order order) {
-        List<OrderItem> items = order.getItems(); // This line should be removed
-        for (OrderItem orderItem : order.getItems()) {
-        	Menu_items menuItem = orderItem.getMenuItem();
-            prepareItem(menuItem);
-        }
-        System.out.println("Order prepared successfully.");
+    public Chef(String name, String userName, String password, String role, int contactNumber,  double salary) {
+        super(name, userName, password, role, contactNumber);
+       
+        this.salary = salary;
     }
 
-    private void prepareItem(Menu_items menuItem) {
-        System.out.println("Preparing: " + menuItem.getDishName());
+  
+    @Override
+    public void displayInfo() {
+        super.displayInfo(); 
+       
+        System.out.println("Salary: $" + salary);
     }
 
+
+	
 }

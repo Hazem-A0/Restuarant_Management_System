@@ -5,19 +5,22 @@ import Services.Order;
 import Services.OrderItem;
 
 public final class Waiter extends Users {
-   
+	 private double salary;
   
 
-	public Waiter(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
+	 public Waiter(String name, String userName, String password, String role, int contactNumber, double salary) {
+	        super(name, userName, password, role, contactNumber);
+	        
+	        this.salary = salary;
+	    }
+
+	@Override
+	public void displayInfo() {
+	
+		super.displayInfo();
+		System.out.println("Salary: $" + salary);
+		
 	}
 
-	/*public Order createOrder(ArrayList<OrderItem> items , int ID,String name) {
-        Order order = new Order(ID,name);
-        for (OrderItem item : items) {
-            order.addItem(item);
-        }
-        System.out.println("Order created successfully.");
-        return order;
-    }*/
+	
 }

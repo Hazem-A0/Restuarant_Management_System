@@ -76,4 +76,10 @@ public class Receptionist extends Users implements Removable{
 	        return reservations;
 	    }
 
+	@Override
+	public void displayInfo() {
+		
+		super.displayInfo();
+	}
+
 }

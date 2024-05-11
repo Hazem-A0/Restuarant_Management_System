@@ -1,6 +1,6 @@
 package Services;
 
-public  class Menu_items implements Comparable<Menu_items>{
+public  class Menu_items implements Comparable<Menu_items> {
 
 	private String dishName;
 	private String dishType;
@@ -44,6 +44,12 @@ public  class Menu_items implements Comparable<Menu_items>{
 		if (newPrice<0) throw new IllegalArgumentException();
 		this.price = newPrice;
 	}
+	
+	/*@Override
+	public void remove_object() {
+		 Menu.getInstance().removeMenuItem(this);
+    
+	}*/
 	
 	public int compareTo(Menu_items item)
 	{
