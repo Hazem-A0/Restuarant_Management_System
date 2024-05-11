@@ -95,7 +95,7 @@ public class OrderPage {
                 }
             } catch (NumberFormatException e) {
                 // Display error for non-integer quantity
-                showError("Please enter a valid quantity.");
+                showError("Please enter an integer quantity.");
                 return;
             }
             
@@ -171,7 +171,7 @@ public class OrderPage {
         totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
     }
     private void showError(String message) {
-        // Set error message to the Text node
+       
         errorText.setText("Error: " + message);
     }
 
