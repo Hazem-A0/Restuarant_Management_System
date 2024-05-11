@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +24,18 @@ public class OrderPage {
     private List<OrderItem> orderItems = new ArrayList<>();
     private String[] menuItemStrings;
     private TextField totalPriceField; // Added field to display total price
+    private Text errorText;
 
     public OrderPage(
             Menu menu, Customer customer) {
         this.customer = customer;
+        errorText = new Text();
+        errorText.setFill(Color.WHITE);
         this.menu = menu;
         menuItemStrings = new String[menu.getItems().size()];
         for (int i = 0; i < menu.getItems().size(); i++) {
             menuItemStrings[i] = menu.getItems().get(i).toString();
+            
         }
     }
 
@@ -74,7 +79,26 @@ public class OrderPage {
         Button addItemButton = new Button("Add item");
         addItemButton.setOnAction(ev -> {
             Menu_items selectedItem = menu.getItems().get(itemDropdown.getSelectionModel().getSelectedIndex());
-            int quantity = Integer.parseInt(quantityField.getText());
+            String quantityInput = quantityField.getText();
+            if (quantityInput.isEmpty()) {
+                // Display error for empty quantity
+                showError("Please enter a quantity.");
+                return;
+            }
+            int quantity;
+            try {
+                quantity = Integer.parseInt(quantityInput);
+                if (quantity <= 0) {
+                    // Display error for negative or zero quantity
+                    showError("Please enter a positive quantity.");
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                // Display error for non-integer quantity
+                showError("Please enter a valid quantity.");
+                return;
+            }
+            
             OrderItem item = new OrderItem(selectedItem, quantity);
             orderItems.add(item);
 
@@ -133,7 +157,7 @@ public class OrderPage {
             SceneController.gotoHomePage(e);
         });
         layout.getChildren().add(cancelOrderButton);
-
+        layout.getChildren().add(errorText);
         root.setCenter(layout);
         return scene;
     }
@@ -146,4 +170,9 @@ public class OrderPage {
         }
         totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
     }
+    private void showError(String message) {
+        // Set error message to the Text node
+        errorText.setText("Error: " + message);
+    }
+
 }

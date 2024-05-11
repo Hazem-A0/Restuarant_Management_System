@@ -46,7 +46,6 @@ public class ReservationPage {
         VBox hbox_title = new VBox();
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
-        title.setStyle("-fx-fill: white;");
 
 //        Image image = new Image("GUI/logo.png");
 //        ImageView imageView = new ImageView(image);
