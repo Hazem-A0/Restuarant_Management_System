@@ -41,10 +41,12 @@ public class ReservationPage {
         root.setId("background");
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+
         // Place Title on the top
         VBox hbox_title = new VBox();
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
+        title.setStyle("-fx-fill: white;");
 
 //        Image image = new Image("GUI/logo.png");
 //        ImageView imageView = new ImageView(image);
@@ -74,9 +76,12 @@ public class ReservationPage {
         }
         if (!hasReservations) {
             Label noReservationsLabel = new Label("You have no reservations");
+            noReservationsLabel.getStyleClass().add("white-text");
             Label dateLabel = new Label("Date:");
+            dateLabel.getStyleClass().add("white-text");
             TextField dateInput = new TextField();
             Label numberOfPeopleLabel = new Label("Number of People:");
+            numberOfPeopleLabel.getStyleClass().add("white-text");
             TextField numberOfPeopleInput = new TextField();
             Button makeReservationButton = new Button("Make Reservation");
             makeReservationButton.setOnAction(e -> makeReservationButtonClicked(dateInput.getText(),
