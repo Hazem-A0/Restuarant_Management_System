@@ -80,6 +80,7 @@ public class OrderPage {
         addItemButton.setOnAction(ev -> {
             Menu_items selectedItem = menu.getItems().get(itemDropdown.getSelectionModel().getSelectedIndex());
             String quantityInput = quantityField.getText();
+            showError("");
             if (quantityInput.isEmpty()) {
                 // Display error for empty quantity
                 showError("Please enter a quantity.");
@@ -172,7 +173,7 @@ public class OrderPage {
     }
     private void showError(String message) {
        
-        errorText.setText("Error: " + message);
+        errorText.setText( message);
     }
 
 }
