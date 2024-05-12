@@ -25,7 +25,7 @@ public class LoginPage {
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
 
-        Image image = new Image(getClass().getResourceAsStream("/GUI/logo2.jpg"));
+        Image image = new Image(getClass().getResourceAsStream("/GUI/logo3.png"));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(200);
         imageView.setFitWidth(200);
