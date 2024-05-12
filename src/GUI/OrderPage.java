@@ -92,11 +92,14 @@ public class OrderPage {
                 if (quantity <= 0) {
                     // Display error for negative or zero quantity
                     showError("Please enter a positive quantity.");
+                    quantityField.setText("");
                     return;
                 }
             } catch (NumberFormatException e) {
                 // Display error for non-integer quantity
+            	quantityField.setText("");
                 showError("Please enter an integer quantity.");
+                
                 return;
             }
             
