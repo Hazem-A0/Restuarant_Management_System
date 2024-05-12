@@ -63,6 +63,7 @@ public class ReservationPage {
             if (reservation.getCustomer().equals(customer)) {
                 Label reservationLabel = new Label("Reservation: " + reservation.getReservationDateTime() + " for "
                         + reservation.getNumberOfPeople() + " people");
+                reservationLabel.getStyleClass().add("white-text");
                 Button orderButton = new Button("Order");
                 Button cancelButton = new Button("Cancel Reservation");
 
