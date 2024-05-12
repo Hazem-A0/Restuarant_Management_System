@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +15,7 @@ import GUI.SceneController;
 import Users.Customer;
 
 public class LoginPage {
+	//Text texterror;
     public Scene getScene() {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 800, 600);
@@ -40,6 +42,8 @@ public class LoginPage {
         username.setPromptText("Username");
         TextField password = new TextField();
         password.setPromptText("Password");
+        Text texterror = new Text("");
+        texterror.setFill(Color.WHITE);
 
         // Place buttons in the center
         Button login_button = new Button("Login");
@@ -55,12 +59,14 @@ public class LoginPage {
                         SceneController.setCustomer(registeredCustomer);
                         SceneController.gotoReservation(ev);
                     } else {
-                        System.out.println("Username or Password is incorrect");
+                    	texterror.setText("Username or Password is incorrect") ;
+                        //System.out.println("Username or Password is incorrect");
                     }
                 }
             }
             if (userFound == false)
-                System.out.println("Username or Password is incorrect");
+            	texterror.setText("Username or Password is incorrect") ;
+                //System.out.println("Username or Password is incorrect");
         });
 
         home_button.setOnAction(new EventHandler<ActionEvent>() {
@@ -71,10 +77,10 @@ public class LoginPage {
         });
 
         VBox hbox = new VBox();
-        hbox.getChildren().addAll(username, password, login_button, home_button);
+        hbox.getChildren().addAll(username, password, login_button, home_button,texterror);
         hbox.setId("center");
         root.setCenter(hbox);
-
+        
         return scene;
     }
 }
