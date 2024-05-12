@@ -25,15 +25,15 @@ public class LoginPage {
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
 
-//        Image image = new Image("GUI/logo.png");
-//        ImageView imageView = new ImageView(image);
-//        imageView.setFitHeight(200);
-//        imageView.setFitWidth(200);
-//        imageView.setPreserveRatio(true);
-//        hbox_title.getChildren().add(title);
-//        hbox_title.getChildren().add(imageView);
-//        hbox_title.setId("headercontainer");
-//        root.setTop(hbox_title);
+        Image image = new Image(getClass().getResourceAsStream("/GUI/logo2.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        imageView.setPreserveRatio(true);
+        hbox_title.getChildren().add(title);
+        hbox_title.getChildren().add(imageView);
+        hbox_title.setId("headercontainer");
+        root.setTop(hbox_title);
 
         // Place text fields in the center
         TextField username = new TextField();
