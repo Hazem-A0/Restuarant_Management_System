@@ -47,7 +47,7 @@
   -fx-padding: 20px;
   -fx-text-alignment: center;
   -fx-spacing: 30px;
-  -fx-background-color: #633dc0;
+ /*-fx-background-color: #633dc0;*/
 }
 
 #totalPriceText {

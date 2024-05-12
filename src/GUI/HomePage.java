@@ -24,7 +24,7 @@ public class HomePage {
         Text title = new Text("NPC Restaurant and Cafe");
         title.setId("title");
 
-        Image image = new Image(getClass().getResourceAsStream("/GUI/logo2.png"));
+        Image image = new Image(getClass().getResourceAsStream("/GUI/logo2.jpg"));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(200);
         imageView.setFitWidth(200);
