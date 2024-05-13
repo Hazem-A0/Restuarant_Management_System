@@ -46,11 +46,12 @@ public class OrderCompletePage {
         Text orderDetailsText = new Text(orderDetails);
         Text totalPriceText = new Text("Total Price: " + totalPrice);
         // set text color to white and font size to 20
-        orderDetailsText.setId("orderDetailsText");
-        totalPriceText.setId("totalPriceText");
+        orderDetailsText.setFill(javafx.scene.paint.Color.WHITE);
+        orderDetailsText.setStyle("-fx-font-size: 20");
+        totalPriceText.setFill(javafx.scene.paint.Color.WHITE);
+        totalPriceText.setStyle("-fx-font-size: 24");
         orderContainer.getChildren().add(orderDetailsText);
         orderContainer.getChildren().add(totalPriceText);
-        orderContainer.setId("center");
         root.setCenter(orderContainer);
 
         // Place buttons in the center
