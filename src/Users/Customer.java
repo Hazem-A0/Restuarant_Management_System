@@ -1,4 +1,5 @@
 package Users;
+
 import Services.Bill;
 import Services.Menu_items;
 import Services.Order;
@@ -8,37 +9,40 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import Exeptions.InvalidUserType;
+
 public class Customer extends Users {
-	private boolean checkedIn;
-	private Order currentOrder;
-	private LocalDateTime lastVisitTime;
-	private List<OrderItem> currentOrderItems;
-	private Bill bill;
-	
-	
-	public Customer(String name, String userName, String password, String role, int contactNumber) {
-		super(name, userName, password, role, contactNumber);
-		currentOrderItems = new ArrayList<>();
-		this.checkedIn=false;
-	}
-	public LocalDateTime getLastVisitTime() {
-		return lastVisitTime;
-	}
+    private boolean checkedIn;
+    private Order currentOrder;
+    private LocalDateTime lastVisitTime;
+    private List<OrderItem> currentOrderItems;
+    private Bill bill;
 
-	public void setLastVisitTime(LocalDateTime lastVisitTime) {
-		this.lastVisitTime = lastVisitTime;
-	}
+    public Customer(String name, String userName, String password, String role, int contactNumber) {
+        super(name, userName, password, role, contactNumber);
+        currentOrderItems = new ArrayList<>();
+        this.checkedIn = false;
 
-	public List<OrderItem> getItems() {
-		return currentOrderItems;
-	}
+    }
 
-	public void addToOrder(Menu_items item, int quantity) {
+    public LocalDateTime getLastVisitTime() {
+        return lastVisitTime;
+    }
+
+    public void setLastVisitTime(LocalDateTime lastVisitTime) {
+        this.lastVisitTime = lastVisitTime;
+    }
+
+    public List<OrderItem> getItems() {
+        return currentOrderItems;
+    }
+
+    public void addToOrder(Menu_items item, int quantity) {
         OrderItem orderItem = new OrderItem(item, quantity);
         currentOrderItems.add(orderItem);
         System.out.println("Added " + quantity + "x " + item.getDishName() + " to your order.");
     }
-	
+
     public void placeOrder(String paymentType) {
         if (currentOrderItems.isEmpty()) {
             System.out.println("Your order is empty. Please add items before placing the order.");
@@ -46,7 +50,7 @@ public class Customer extends Users {
         }
 
         currentOrder = new Order(this, currentOrderItems);
-        bill = new Bill( this, paymentType, currentOrder);
+        bill = new Bill(this, paymentType, currentOrder);
         System.out.println("Order Details:");
         System.out.println("Customer: " + this.getName());
         System.out.println("Items:");
@@ -60,31 +64,27 @@ public class Customer extends Users {
         currentOrderItems.clear();
         System.out.println("Order placed successfully.");
     }
-    
 
-	public void setCheckedIn(boolean checkedIn) {
-		this.checkedIn = checkedIn;
-	}
+    public void setCheckedIn(boolean checkedIn) {
+        this.checkedIn = checkedIn;
+    }
 
-
-
-	
-	public void checkIn() {
+    public void checkIn() {
         checkedIn = true;
         System.out.println(name + " has checked in.");
     }
-	
-	public Bill getBill() {
-		return bill;
-	}
-	
-	public void checkOut() {
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void checkOut() {
         checkedIn = false;
         lastVisitTime = LocalDateTime.now();
         System.out.println(name + " has checked out.");
     }
-	
-	public void cancelOrder() {
+
+    public void cancelOrder() {
         if (currentOrder != null) {
             currentOrder.setStatus(OrderStatus.CANCELLED);
             System.out.println(name + "'s current order has been cancelled.");
@@ -92,7 +92,8 @@ public class Customer extends Users {
             System.out.println(name + " does not have an active order to cancel.");
         }
     }
-	public void modifyOrder(Order newOrder) {
+
+    public void modifyOrder(Order newOrder) {
         if (currentOrder != null) {
             currentOrder = newOrder;
             System.out.println(name + "'s order has been modified.");
@@ -100,7 +101,8 @@ public class Customer extends Users {
             System.out.println(name + " does not have an active order to modify.");
         }
     }
-	public LocalDateTime getLastVisitedTime() {
+
+    public LocalDateTime getLastVisitedTime() {
         if (lastVisitTime != null) {
             return lastVisitTime;
         } else {
@@ -108,23 +110,23 @@ public class Customer extends Users {
             return null;
         }
     }
-	
-	public boolean isCheckedIn() {
+
+    public boolean isCheckedIn() {
         return checkedIn;
     }
-	public Order getCurrentOrder() {
+
+    public Order getCurrentOrder() {
         return currentOrder;
     }
 
     public void setCurrentOrder(Order currentOrder) {
         this.currentOrder = currentOrder;
     }
-	@Override
-	public void displayInfo() {
-		
-		super.displayInfo();
-	}
-    
-	
+
+    @Override
+    public void displayInfo() {
+
+        super.displayInfo();
+    }
 
 }

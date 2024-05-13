@@ -35,21 +35,18 @@ import javafx.scene.image.ImageView;
 public class Main extends Application {
 
         public static void main(String[] args) {
-        	//add manager 
-        	Users managerInstance = new manager("George", "george", "password", "manager", 1205495697,20000);
-        	managerInstance.displayInfo();
-        	
-        	//add chef
-        	Users Main_Chef = new Chef("Hassan", "hassan", "chef_password", "Chef", 1205495697,10000);
-        	Main_Chef.displayInfo();
-        	
-        	//add Waiter
-        	Users Waiter1 = new Waiter("Ibrahim", "ibrahim", "waiter_password", "Waiter", 1205495697,5000);
-        	Main_Chef.displayInfo();
-        	
-        	
-        	
-        	
+                // add manager
+                Users managerInstance = new manager("George", "george", "password", "manager", 1205495697, 20000);
+                managerInstance.displayInfo();
+
+                // add chef
+                Users Main_Chef = new Chef("Hassan", "hassan", "chef_password", "Chef", 1205495697, 10000);
+                Main_Chef.displayInfo();
+
+                // add Waiter
+                Users Waiter1 = new Waiter("Ibrahim", "ibrahim", "waiter_password", "Waiter", 1205495697, 5000);
+                Main_Chef.displayInfo();
+
                 // Create tables
                 Tables table1 = new Tables(3);
                 Tables table2 = new Tables(4);
@@ -67,7 +64,7 @@ public class Main extends Application {
                 Menu_items item3 = new Menu_items("Salads", "Salad", 6);
 
                 // Create a menu
-                Menu menu = new Menu();          
+                Menu menu = new Menu();
                 menu.addItem(item1);
                 menu.addItem(item2);
                 menu.addItem(item3);
@@ -84,13 +81,10 @@ public class Main extends Application {
                 Customer customer1 = new Customer("Hazem", "Hazem", "password", "customer", 123456789);
                 Customer customer2 = new Customer("Amin", "Amin", "password", "customer", 123456689);
                 Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
-             
-                
-                
-                
+
                 // Create a reservation
                 LocalDateTime reservationDateTime = LocalDateTime.now().plusDays(1);
-                Reservation reservation = new Reservation( customer1, reservationDateTime, 4);
+                Reservation reservation = new Reservation(customer1, reservationDateTime, 4);
 
                 // Receptionist creates a reservation
                 Receptionist receptionist = new Receptionist("Receptionist", "receptionist", "password", "receptionist",
@@ -98,11 +92,11 @@ public class Main extends Application {
                 Receptionist.set_tables(tables);
                 receptionist.createReservation(customer1, reservationDateTime, 4);
                 receptionist.createReservation(customer2, reservationDateTime, 5);
-                
+
                 // Remove the reservation using polymorphism
                 Removable removable = receptionist; // Polymorphic reference
                 removable.remove_object(customer1);
-                
+
                 // Display reservations
                 System.out.println("\nReservations:");
                 for (Reservation res : receptionist.getReservations()) {
@@ -116,8 +110,8 @@ public class Main extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception {
                 try {
-                	// add manager
-                	
+                        // add manager
+
                         // Create tables
                         Tables table1 = new Tables(3);
                         Tables table2 = new Tables(4);
@@ -153,7 +147,10 @@ public class Main extends Application {
                         Customer customer2 = new Customer("Amin", "amin2", "hazem2", "customer", 123456689);
                         Customer customer3 = new Customer("Michael", "michael", "michael3", "customer", 123445789);
 
-                        Customer[] registeredCustomers = { customer1, customer2, customer3 };
+                        ArrayList<Customer> registeredCustomers = new ArrayList<Customer>();
+                        registeredCustomers.add(customer1);
+                        registeredCustomers.add(customer2);
+                        registeredCustomers.add(customer3);
                         // Create a reservation
                         LocalDateTime reservationDateTime = LocalDateTime.now().plusDays(1);
                         Reservation reservation = new Reservation(customer1, reservationDateTime, 4);
@@ -164,8 +161,8 @@ public class Main extends Application {
                                         987654321);
                         Receptionist.set_tables(tables);
                         receptionist.createReservation(customer1, reservationDateTime, 4);
-                        
-                     // Create a list of order items
+
+                        // Create a list of order items
                         ArrayList<OrderItem> orderItems = new ArrayList<>();
                         orderItems.add(new OrderItem(item1, 2)); // Example: Add 2 portions of item1 to the order
                         orderItems.add(new OrderItem(item2, 1)); // Example: Add 1 portion of item2 to the order

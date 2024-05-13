@@ -1,5 +1,7 @@
 package GUI;
 
+import java.util.ArrayList;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -15,7 +17,7 @@ import GUI.SceneController;
 import Users.Customer;
 
 public class LoginPage {
-	//Text texterror;
+    // Text texterror;
     public Scene getScene() {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 800, 600);
@@ -52,21 +54,22 @@ public class LoginPage {
         // control button
         login_button.setOnAction(ev -> {
             boolean userFound = false;
-            for (Customer registeredCustomer : SceneController.getRegisteredCustomers()) {
+            ArrayList<Customer> regCustomersArr = SceneController.getRegisteredCustomers();
+            for (Customer registeredCustomer : regCustomersArr) {
                 if (registeredCustomer.getUserName().equals(username.getText())) {
                     userFound = true;
                     if (registeredCustomer.getPassword().equals(password.getText())) {
                         SceneController.setCustomer(registeredCustomer);
                         SceneController.gotoReservation(ev);
                     } else {
-                    	texterror.setText("Username or Password is incorrect") ;
-                        //System.out.println("Username or Password is incorrect");
+                        texterror.setText("Username or Password is incorrect");
+                        // System.out.println("Username or Password is incorrect");
                     }
                 }
             }
             if (userFound == false)
-            	texterror.setText("Username or Password is incorrect") ;
-                //System.out.println("Username or Password is incorrect");
+                texterror.setText("Username or Password is incorrect");
+            // System.out.println("Username or Password is incorrect");
         });
 
         home_button.setOnAction(new EventHandler<ActionEvent>() {
@@ -77,10 +80,10 @@ public class LoginPage {
         });
 
         VBox hbox = new VBox();
-        hbox.getChildren().addAll(username, password, login_button, home_button,texterror);
+        hbox.getChildren().addAll(username, password, login_button, home_button, texterror);
         hbox.setId("center");
         root.setCenter(hbox);
-        
+
         return scene;
     }
 }

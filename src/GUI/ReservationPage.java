@@ -12,7 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
+import javafx.scene.control.DatePicker;
 import Users.Users;
+
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import Services.Reservation;
 import Users.Customer;
 import Users.Receptionist;
@@ -31,8 +36,10 @@ public class ReservationPage {
         SceneController.gotoHome(e);
     }
 
-    public void makeReservationButtonClicked(String date, int numberOfPeople) {
-        // TODO: Implement make reservation
+    public void makeReservationButtonClicked(LocalDate reservationDate, int numberOfPeople, ActionEvent e) {
+        LocalDateTime reservationDateTime = reservationDate.atStartOfDay();
+        receptionist.createReservation(customer, reservationDateTime, numberOfPeople);
+        SceneController.gotoReservation(e);
     }
 
     public Scene getScene() {
@@ -40,7 +47,6 @@ public class ReservationPage {
         Scene scene = new Scene(root, 800, 600);
         root.setId("background");
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
 
         // Place Title on the top
         VBox hbox_title = new VBox();
@@ -55,7 +61,7 @@ public class ReservationPage {
         hbox_title.getChildren().add(title);
         hbox_title.getChildren().add(imageView);
         hbox_title.setId("headercontainer");
-       root.setTop(hbox_title);
+        root.setTop(hbox_title);
 
         VBox layout = new VBox();
         boolean hasReservations = false;
@@ -79,14 +85,17 @@ public class ReservationPage {
             noReservationsLabel.getStyleClass().add("white-text");
             Label dateLabel = new Label("Date:");
             dateLabel.getStyleClass().add("white-text");
-            TextField dateInput = new TextField();
+            // date input
+            DatePicker datePicker = new DatePicker(LocalDateTime.now().toLocalDate());
+
             Label numberOfPeopleLabel = new Label("Number of People:");
             numberOfPeopleLabel.getStyleClass().add("white-text");
             TextField numberOfPeopleInput = new TextField();
             Button makeReservationButton = new Button("Make Reservation");
-            makeReservationButton.setOnAction(e -> makeReservationButtonClicked(dateInput.getText(),
-                    Integer.parseInt(numberOfPeopleInput.getText())));
-            layout.getChildren().addAll(noReservationsLabel, dateLabel, dateInput, numberOfPeopleLabel,
+            makeReservationButton
+                    .setOnAction(e -> makeReservationButtonClicked(datePicker.getValue(),
+                            Integer.parseInt(numberOfPeopleInput.getText()), e));
+            layout.getChildren().addAll(noReservationsLabel, dateLabel, datePicker, numberOfPeopleLabel,
                     numberOfPeopleInput, makeReservationButton);
         }
 

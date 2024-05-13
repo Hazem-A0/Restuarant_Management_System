@@ -1,5 +1,9 @@
 package GUI;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+
 import Users.Customer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +15,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class RegisterPage {
+    ArrayList<Customer> registeredCustomers = new ArrayList<Customer>();
+
+    public RegisterPage(ArrayList<Customer> registeredCustomers) {
+        this.registeredCustomers = registeredCustomers;
+    }
+
     public Scene getScene() {
         BorderPane root = new BorderPane();
         Scene scene = new Scene(root, 800, 600);
@@ -36,6 +46,8 @@ public class RegisterPage {
         roleField.setPromptText("Role");
         TextField contactNumberField = new TextField();
         contactNumberField.setPromptText("Contact Number");
+        Text errorMsg = new Text();
+        errorMsg.setId("error");
 
         // Place buttons in the center
         Button registerButton = new Button("Register");
@@ -50,12 +62,18 @@ public class RegisterPage {
                 String userName = usernameField.getText();
                 String password = passwordField.getText();
                 String role = roleField.getText();
-                int contactNumber = Integer.parseInt(contactNumberField.getText());
-
-                // Create new Customer object
+                int contactNumber;
+                try {
+                    contactNumber = Integer.parseInt(contactNumberField.getText());
+                } catch (Throwable e) {
+                    errorMsg.setText("Invalid Number");
+                    return;
+                }
                 Customer customer = new Customer(name, userName, password, role, contactNumber);
-                // Optionally, you can perform further actions with the customer object
+                registeredCustomers.add(customer);
                 System.out.println("New customer registered: " + customer.getName());
+
+                // Optionally, you can perform further actions with the customer object
             }
         });
 
@@ -67,7 +85,8 @@ public class RegisterPage {
         });
 
         VBox hbox = new VBox();
-        hbox.getChildren().addAll(nameField, usernameField, passwordField, roleField, contactNumberField, registerButton, homeButton);
+        hbox.getChildren().addAll(nameField, usernameField, passwordField, roleField, contactNumberField,
+                registerButton, homeButton, errorMsg);
         hbox.setId("center");
         root.setCenter(hbox);
 

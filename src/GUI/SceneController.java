@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class SceneController {
     private static Scene scene;
     private static Stage stage;
@@ -21,7 +23,7 @@ public class SceneController {
     private static Menu menu;
     private static Customer customer;
     private static Receptionist receptionist;
-    private static Customer[] registeredCustomers;
+    private static ArrayList<Customer> registeredCustomers;
 
     public static void setStage(Stage stage_) {
         stage = stage_;
@@ -39,11 +41,11 @@ public class SceneController {
         SceneController.receptionist = receptionist;
     }
 
-    public static void setRegisteredCustomers(Customer[] registeredCustomers) {
+    public static void setRegisteredCustomers(ArrayList<Customer> registeredCustomers) {
         SceneController.registeredCustomers = registeredCustomers;
     }
 
-    public static Customer[] getRegisteredCustomers() {
+    public static ArrayList<Customer> getRegisteredCustomers() {
         return registeredCustomers;
     }
 
@@ -60,7 +62,7 @@ public class SceneController {
     }
 
     public static void gotoRegister(ActionEvent event) {
-        RegisterPage registerPage = new RegisterPage();
+        RegisterPage registerPage = new RegisterPage(registeredCustomers);
         scene = registerPage.getScene();
         stage.setScene(scene);
     }
@@ -76,6 +78,7 @@ public class SceneController {
         scene = orderPage.getScene();
         stage.setScene(scene);
     }
+
     public static void gotoHomePage(ActionEvent event) {
         HomePage homePage = new HomePage();
         scene = homePage.getScene();

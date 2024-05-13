@@ -1,42 +1,34 @@
 package Users;
 
-
 public abstract class Users {
     protected String name;
     private String userName;
     private String password;
     protected String role;
-    private int contactNumber ;
+    private int contactNumber;
 
-    
+    public Users(String name, String userName, String password, String role, int contactNumber) {
+        super();
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.contactNumber = contactNumber;
+    }
 
+    public int getContactNumber() {
+        return contactNumber;
+    }
 
-	public Users(String name, String userName, String password, String role, int contactNumber) {
-		super();
-		this.name = name;
-		this.userName = userName;
-		this.password = password;
-		this.role = role;
-		this.contactNumber = contactNumber;
-	}
+    public void setContactNumber(int contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public int getContactNumber() {
-		return contactNumber;
-	}
-
-
-	public void setContactNumber(int contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-
-	public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -60,8 +52,10 @@ public abstract class Users {
         this.password = password;
     }
 
-    public String getRole() { return role; }
-    
+    public String getRole() {
+        return role;
+    }
+
     public void displayInfo() {
         System.out.println("Name: " + name);
         System.out.println("Username: " + userName);
@@ -70,7 +64,7 @@ public abstract class Users {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Name: " + name + "\n"
                 + "User Name: " + userName + "\n"
                 + "Password: " + password + "\n"
