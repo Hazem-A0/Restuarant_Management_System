@@ -25,6 +25,6 @@ UML Diagram:
 
 Demo-Video:
 
-https://github.com/Hazem-A0/Restuarant_Management_System/assets/109428270/f6bbd27d-650e-4954-a3bf-e8d6f55d62c7
+https://github.com/Hazem-A0/Restuarant_Management_System/assets/109428270/c532aebf-3dc2-4b9e-a6e3-d3cc62fba91c
 
 
