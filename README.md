@@ -22,3 +22,9 @@ Tech Stack:
 
 UML Diagram:
 ![umlfinalfinal](https://github.com/Hazem-A0/Restuarant_Management_System/assets/109428270/f11d8d8e-d9cd-4cb5-9b26-10d5a47334c0)
+
+Demo-Video:
+
+https://github.com/Hazem-A0/Restuarant_Management_System/assets/109428270/f6bbd27d-650e-4954-a3bf-e8d6f55d62c7
+
+
