@@ -76,3 +76,13 @@
 #visaCheckBox {
   -fx-text-fill: white;
 }
+
+#orderDetailsText {
+  -fx-fill: white;
+  -fx-font-size: 20px;
+}
+
+#totalPriceText {
+  -fx-fill: white;
+  -fx-font-size: 20px;
+}

@@ -35,7 +35,7 @@ public class OrderPage {
         menuItemStrings = new String[menu.getItems().size()];
         for (int i = 0; i < menu.getItems().size(); i++) {
             menuItemStrings[i] = menu.getItems().get(i).toString();
-            
+
         }
     }
 
@@ -50,8 +50,15 @@ public class OrderPage {
         System.out.println("Total Price: $" + totalPrice);
         System.out.println("Payment Method: " + paymentMethod);
 
+        String orderDetails = "Order items:\n";
+        for (OrderItem item : orderItems) {
+            orderDetails += item.getMenuItem().getDishName() + " x" + item.getQuantity() + "\n";
+        }
+
         // Set total price in the text field
         totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
+
+        SceneController.gotoOrderComplete(e, totalPrice, orderDetails);
     }
 
     public Scene getScene() {
@@ -97,12 +104,12 @@ public class OrderPage {
                 }
             } catch (NumberFormatException e) {
                 // Display error for non-integer quantity
-            	quantityField.setText("");
+                quantityField.setText("");
                 showError("Please enter an integer quantity.");
-                
+
                 return;
             }
-            
+
             OrderItem item = new OrderItem(selectedItem, quantity);
             orderItems.add(item);
 
@@ -143,10 +150,10 @@ public class OrderPage {
         CheckBox visaCheckBox = new CheckBox("Visa");
         visaCheckBox.setId("visaCheckBox"); // Set ID for CSS styling
 
-
         // Add order button
         Button orderButton = new Button("Order");
-        orderButton.setOnAction(e -> orderButtonClicked(e, cashCheckBox.isSelected() ? "Cash" : (visaCheckBox.isSelected() ? "Visa" : "Unknown")));
+        orderButton.setOnAction(e -> orderButtonClicked(e,
+                cashCheckBox.isSelected() ? "Cash" : (visaCheckBox.isSelected() ? "Visa" : "Unknown")));
         layout.getChildren().addAll(cashCheckBox, visaCheckBox, orderButton);
 
         // Add total price text field
@@ -174,9 +181,10 @@ public class OrderPage {
         }
         totalPriceField.setText(String.format("Total Price: $%.2f", totalPrice));
     }
+
     private void showError(String message) {
-       
-        errorText.setText( message);
+
+        errorText.setText(message);
     }
 
 }

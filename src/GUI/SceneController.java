@@ -8,6 +8,7 @@ import Services.Reservation;
 import Users.Customer;
 import Users.Receptionist;
 import GUI.OrderPage;
+import GUI.OrderCompletePage;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
@@ -82,6 +83,12 @@ public class SceneController {
     public static void gotoHomePage(ActionEvent event) {
         HomePage homePage = new HomePage();
         scene = homePage.getScene();
+        stage.setScene(scene);
+    }
+
+    public static void gotoOrderComplete(ActionEvent event, double totalPrice, String orderDetails) {
+        OrderCompletePage orderCompletePage = new OrderCompletePage(totalPrice, orderDetails);
+        scene = orderCompletePage.getScene();
         stage.setScene(scene);
     }
 
